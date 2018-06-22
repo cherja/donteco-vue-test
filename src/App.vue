@@ -1,9 +1,12 @@
 <template>
   <div>
-    <modalcontent></modalcontent>
+    <modalcontent @emit-media="pushMedia"></modalcontent>
     <videocontent></videocontent>
     <audiocontent></audiocontent>
     <imagecontent></imagecontent>
+    <ol>
+      <li v-for="el in mediaArray" :key="el.id" >{{el}}</li>
+    </ol>
   </div> 
 </template>
 
@@ -18,6 +21,16 @@ export default {
     videocontent,
     modalcontent,
     imagecontent
+  },
+  data () {
+    return {
+      mediaArray: []
+    }
+  },
+  methods: {
+    pushMedia (e) {
+      this.mediaArray.push(e)
+    }
   }
 }
 </script>

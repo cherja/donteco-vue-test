@@ -21,7 +21,7 @@
           <input type="text" name="test" id="src">
         </P>
       <button class="app-modal-window_close" @click="modalWindow = false">х</button>
-      <button>Добавить</button>   
+      <button @click="addMedia()">Добавить</button>   
     </div>
   </div>
 
@@ -32,6 +32,11 @@ export default {
   data () {
     return {
       modalWindow: false
+    }
+  },
+  methods: {
+    addMedia() {
+      this.$emit('emit-media', `<audiocontent></audiocontent>`)
     }
   }
 }
