@@ -4,7 +4,6 @@
       controls
       :src="src">
     </video>
-    <button @click="removeMedia">delete</button>
   </div>
 </template>
 
@@ -14,15 +13,6 @@ export default {
     src: {
       type: String,
       required: true
-    },
-    id: {
-      type: Number,
-      required: true
-    }
-  },
-   methods: {
-    removeMedia() {
-      this.$emit('emit-id', this.id )
     }
   }
 }

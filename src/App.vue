@@ -2,34 +2,27 @@
   <div>
     <ModalContent @emit-media="pushMedia" />
     <div class="content">
-      <div v-for="el in mediaBlocks" :key="el.id" >
-        <AudioContent @emit-id="removeMedia" :src="el.src" :id="el.id" v-if="el.type == 'audio'" />
-        <VideoContent @emit-id="removeMedia" :src="el.src" :id="el.id" v-if="el.type == 'video'" />
-        <ImageContent @emit-id="removeMedia" :src="el.src" :id="el.id" v-if="el.type == 'image'" />
+      <div v-for="el in mediaBlocks" :key="el.id">
+        <MediaContent @emit-id="removeMedia" :el="el">
+        </MediaContent>
       </div>
     </div>
-
   </div> 
 </template>
 
 <script>
-import AudioContent from './components/Audio.vue'
-import VideoContent from './components/Video.vue'
 import ModalContent from './components/Modal.vue'
-import ImageContent from './components/Image.vue'
+import MediaContent from './components/Media.vue'
 
 export default {
   components:{
-    AudioContent,
-    VideoContent,
     ModalContent,
-    ImageContent
+    MediaContent
   },
   data () {
     return {
-      mediaBlocks: [
-      ],
-      increment: 0
+      mediaBlocks: [],
+      increment  : 0
     }
   },
   methods: {
