@@ -2,10 +2,10 @@
   <div>
     <ModalContent @emit-media="pushMedia" />
     <div class="content">
-      <div  v-for="el in mediaBlocks" :key="el.id" >
-        <AudioContent :src="el.src" v-if="el.type == 'audio'" />
-        <VideoContent :src="el.src" v-if="el.type == 'video'" />
-        <ImageContent :src="el.src" v-if="el.type == 'image'" />
+      <div v-for="el in mediaBlocks" :key="el.id" >
+        <AudioContent @emit-id="removeMedia" :src="el.src" :id="el.id" v-if="el.type == 'audio'" />
+        <VideoContent @emit-id="removeMedia" :src="el.src" :id="el.id" v-if="el.type == 'video'" />
+        <ImageContent @emit-id="removeMedia" :src="el.src" :id="el.id" v-if="el.type == 'image'" />
       </div>
     </div>
 
@@ -37,6 +37,9 @@ export default {
       let id = this.increment ++
       e.id = id
       this.mediaBlocks.push(e)
+    },
+    removeMedia(e) { 
+      this.mediaBlocks = this.mediaBlocks.filter(item => item.id !== e)
     }
   }
 }

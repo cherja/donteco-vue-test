@@ -1,6 +1,7 @@
 <template>
   <div class="img-box">
-      <img :src="src" alt="Изображение">
+      <img :src="src" :id="id" alt="Изображение">
+      <button @click="removeMedia">delete</button>
   </div>
 </template>
 
@@ -11,6 +12,15 @@ export default {
     src: {
       type: String,
       required: true
+    },
+    id: {
+      type: Number,
+      required: true
+    }
+  },
+   methods: {
+    removeMedia() {
+      this.$emit('emit-id', this.id )
     }
   }
 }

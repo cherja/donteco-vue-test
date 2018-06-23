@@ -2,8 +2,9 @@
   <div class="audio-box">
     <audio 
       controls
-      :src="src">
+      :src="src" :id="id">
     </audio>
+    <button @click="removeMedia">delete</button>
   </div>
 </template>
 
@@ -13,6 +14,15 @@ export default {
     src: {
       type: String,
       required: true
+    },
+    id: {
+      type: Number,
+      required: true
+    }
+  },
+   methods: {
+    removeMedia() {
+      this.$emit('emit-id', this.id )
     }
   }
 }
