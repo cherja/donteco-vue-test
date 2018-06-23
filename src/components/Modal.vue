@@ -1,27 +1,27 @@
 <template>
   <div class="app">
-    <button @click="modalWindow = true">
+    <button @click="isShow = true">
       <span>Добавить медиа</span>
     </button>
-    <div class="app-modal-window" v-if="modalWindow"> 
+    <div class="app-modal-window" v-if="isShow"> 
         <P>
-          <input type="radio" name="test" id="audio" value="audio">
+          <input v-model="type" type="radio" id="audio" value="audio" >
           <label for="audio">Аудио</label>
         </P>
         <P>
-          <input type="radio" name="test" id="video" value="video">
+          <input v-model="type" type="radio" id="video" value="video" >
           <label for="video">Видео</label>
         </P>
         <P>
-          <input type="radio" name="test" id="image" value="image">
+          <input v-model="type" type="radio" id="image" value="image" >
           <label for="image">Изображение</label>
         </P>
         <P>
           <label for="src">Путь</label>
-          <input type="text" name="test" id="src">
+          <input v-model="src" id="src">
         </P>
-      <button class="app-modal-window_close" @click="modalWindow = false">х</button>
-      <button @click="addMedia()">Добавить</button>   
+      <button class="app-modal-window_close" @click="isShow = false">х</button>
+      <button @click="addMedia">Добавить</button>   
     </div>
   </div>
 
@@ -31,19 +31,20 @@
 export default {
   data () {
     return {
-      modalWindow: false
+      isShow      : false,
+      type        : 'audio',
+      src         : ''        
     }
   },
   methods: {
     addMedia() {
-      this.$emit('emit-media', `<audiocontent></audiocontent>`)
+      this.$emit('emit-media', { type:this.type, src:this.src } )
     }
   }
 }
 </script>
 
 <style lang="scss">
-
 .app {
   height: 220px;
 
@@ -68,5 +69,4 @@ export default {
     }
   }
 }
-
 </style>

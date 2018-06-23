@@ -1,40 +1,50 @@
 <template>
   <div>
-    <modalcontent @emit-media="pushMedia"></modalcontent>
-    <videocontent></videocontent>
-    <audiocontent></audiocontent>
-    <imagecontent></imagecontent>
-    <ol>
-      <li v-for="el in mediaArray" :key="el.id" >{{el}}</li>
-    </ol>
+    <ModalContent @emit-media="pushMedia" />
+    <div class="content">
+      <div  v-for="el in mediaBlocks" :key="el.id" >
+        <AudioContent :src="el.src" v-if="el.type == 'audio'" />
+        <VideoContent :src="el.src" v-if="el.type == 'video'" />
+        <ImageContent :src="el.src" v-if="el.type == 'image'" />
+      </div>
+    </div>
+
   </div> 
 </template>
 
 <script>
-import audiocontent from './components/Audio.vue'
-import videocontent from './components/Video.vue'
-import modalcontent from './components/Modal.vue'
-import imagecontent from './components/Image.vue'
+import AudioContent from './components/Audio.vue'
+import VideoContent from './components/Video.vue'
+import ModalContent from './components/Modal.vue'
+import ImageContent from './components/Image.vue'
+
 export default {
   components:{
-    audiocontent,
-    videocontent,
-    modalcontent,
-    imagecontent
+    AudioContent,
+    VideoContent,
+    ModalContent,
+    ImageContent
   },
   data () {
     return {
-      mediaArray: []
+      mediaBlocks: [
+      ],
+      increment: 0
     }
   },
   methods: {
     pushMedia (e) {
-      this.mediaArray.push(e)
+      let id = this.increment ++
+      e.id = id
+      this.mediaBlocks.push(e)
     }
   }
 }
 </script>
 
 <style lang="scss">
-
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
