@@ -1,23 +1,24 @@
 <template>
   <div>
-    <ModalContent @emit-media="pushMedia" />
-    <div class="content">
+    <ModalContent @emit-media="pushMedia" />    
+    <draggable class="content" v-model="myArray" :options="{group:'people'}" @start="drag=true" @end="drag=false">
       <div v-for="el in mediaBlocks" :key="el.id">
-        <MediaContent @emit-id="removeMedia" :el="el">
-        </MediaContent>
+        <MediaContent @emit-id="removeMedia" :el="el" />
       </div>
-    </div>
+    </draggable>
   </div> 
 </template>
 
 <script>
 import ModalContent from './components/Modal.vue'
 import MediaContent from './components/Media.vue'
+import draggable from 'vuedraggable'
 
 export default {
   components:{
     ModalContent,
-    MediaContent
+    MediaContent,
+    draggable
   },
   data () {
     return {
