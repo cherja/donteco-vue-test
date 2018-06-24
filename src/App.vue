@@ -48,4 +48,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
+button{
+  cursor: pointer;
+}
 </style>
