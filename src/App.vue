@@ -35,6 +35,7 @@ export default {
       let id = this.increment ++
       e.id = id
       this.mediaBlocks.push(e)
+      this.isShow = false
     },
     removeMedia(e) { 
       this.mediaBlocks = this.mediaBlocks.filter(item => item.id !== e)
