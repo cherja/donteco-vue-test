@@ -17,16 +17,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.audio-box{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  width:300px;
-  height:300px;
-  border: 1px solid #000;
-  border-radius:3px;
-}
-</style>

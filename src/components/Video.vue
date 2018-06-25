@@ -20,14 +20,10 @@ export default {
 
 <style lang="scss">
 .video-box {
-    margin: 10px;
     position: relative;
     width:300px;
     height:300px;
-    background: #c2c2c2;
-    border: 1px solid #000;
-    border-radius:3px;
-
+    
     video {
       position: absolute;
       left:50%;
