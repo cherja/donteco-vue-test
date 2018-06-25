@@ -1,8 +1,6 @@
 <template>
   <div class="audio-box">
-    <audio 
-      controls
-      :src="src">
+    <audio controls :src="src">
     </audio>
   </div>
 </template>
@@ -11,7 +9,7 @@
 export default {
   props: {
     src: {
-      type: String,
+      type:     String,
       required: true
     }
   }

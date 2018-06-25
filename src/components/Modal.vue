@@ -4,15 +4,30 @@
       <div class="modal-wrapper">
         <div class="modal-container"> 
           <P>
-            <input v-model="type" type="radio" id="audio" value="audio" >
+            <input 
+              v-model="type" 
+              type="radio" 
+              id="audio" 
+              value="audio" 
+            >
             <label for="audio">Аудио</label>
           </P>
           <P>
-            <input v-model="type" type="radio" id="video" value="video" >
+            <input 
+              v-model="type" 
+              type="radio" 
+              id="video" 
+              value="video" 
+            >
             <label for="video">Видео</label>
           </P>
           <P>
-            <input v-model="type" type="radio" id="image" value="image" >
+            <input 
+              v-model="type" 
+              type="radio" 
+              id="image" 
+              value="image" 
+            >
             <label for="image">Изображение</label>
           </P>
           <P>
@@ -31,8 +46,8 @@
 export default {
   data () {
     return {
-      type        : 'audio',
-      src         : ''        
+      type: 'audio',
+      src:  ''        
     }
   },
   methods: {
@@ -63,7 +78,7 @@ export default {
 
 .modal-container {
   position: relative;
-  width: 300px;
+  width: 400px;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;

@@ -1,13 +1,22 @@
 <template>
   <div>
-    <button class="open-modal" @click="isShow = true">
-      <span>Добавить медиа</span>
-    </button>
-    <ModalContent @emit-media="pushMedia" @close="isShow = false" v-if="isShow" />    
-    <draggable class="content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
-      <div v-for="el in mediaBlocks" :key="el.id">
-        <MediaContent @emit-id="removeMedia" :el="el" />
-      </div>
+    <button class="open-modal" @click="isShow = true">Добавить медиа</button>
+    <ModalContent 
+      @emit-media="pushMedia" 
+      @close="isShow = false" 
+      v-if="isShow" 
+    />    
+    <draggable 
+      class="content" 
+      :options="{group:'people'}"
+      @start="drag=true" 
+      @end="drag=false">
+        <MediaContent 
+          @emit-id="removeMedia" 
+          v-for="el in mediaBlocks" 
+          :el="el" 
+          :key="el.id"
+        />  
     </draggable>
   </div> 
 </template>
@@ -25,9 +34,9 @@ export default {
   },
   data () {
     return {
-      isShow      : false,
+      isShow:      false,
       mediaBlocks: [],
-      increment  : 0
+      increment:   0
     }
   },
   methods: {
@@ -53,19 +62,18 @@ export default {
 
 $primary-color: #27ae60;
 
-*{
+* {
   font-family: "SF";
   letter-spacing: .08em;
   font-weight: 800;
 }
 
-body{
+body {
   background-color: #08AEEA;
   background-image: linear-gradient(90deg, #08AEEA 0%, #2AF598 100%);
-
 }
 
-button{
+button {
   cursor: pointer;
 }
 
@@ -75,25 +83,22 @@ button{
   flex-wrap: wrap;
 }
 
-.open-modal{ 
-    outline: none;
-    text-align: center;
-    border: none;
-    margin: 5px 5px;
-    background: $primary-color;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 15px;
-    padding: .7em 1em;
-    font-weight: bold;
-    border-radius: 40px;
-    transition: all 0.3s;
+.open-modal { 
+  outline: none;
+  text-align: center;
+  border: none;
+  margin: 5px 5px;
+  background: $primary-color;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 15px;
+  padding: .7em 1em;
+  border-radius: 40px;
+  transition: all 0.3s;
 }
 
 .open-modal:hover {
   background: darken($primary-color,10%);
   transform: scale(1.1);
-
 }
 </style>

@@ -2,8 +2,9 @@
   <div class="video-box"> 
       <video 
       controls
-      :src="src">
-    </video>
+      :src="src"
+      class="video-box__video"
+    />
   </div>
 </template>
 
@@ -11,7 +12,7 @@
 export default {
   props: {
     src: {
-      type: String,
+      type:     String,
       required: true
     }
   }
@@ -24,7 +25,7 @@ export default {
     width:300px;
     height:300px;
     
-    video {
+    &__video {
       position: absolute;
       left:50%;
       top:50%;

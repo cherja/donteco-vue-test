@@ -1,6 +1,10 @@
 <template>
   <div class="img-box">
-      <img :src="src" alt="Изображение">
+    <img 
+      :src="src" 
+      alt="Изображение" 
+      class="img-box__img"
+    >
   </div>
 </template>
 
@@ -9,7 +13,7 @@
 export default {
   props: {
     src: {
-      type: String,
+      type:     String,
       required: true
     }
   }
@@ -17,12 +21,12 @@ export default {
 </script>
 
 <style lang="scss">
-.img-box{
+.img-box {
     position: relative;
     width:300px;
     height:300px;
-    
-    img{
+
+    &__img {
       position: absolute;
       left:50%;
       top:50%;
