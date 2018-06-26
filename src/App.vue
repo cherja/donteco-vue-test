@@ -5,7 +5,9 @@
       @emit-media="pushMedia" 
       @close="isShow = false" 
       v-if="isShow" 
-    />    
+    >  
+      <img src="./assets/images/add.svg">
+    </ModalContent>  
     <draggable 
       class="content" 
       :options="{group:'people'}"

@@ -34,8 +34,8 @@
             <label for="src">Путь</label>
             <input v-model="src" id="src">
           </P>
-          <button class="modal-container__close" @click="$emit('close')">х</button>
-          <button @click="addMedia">Добавить</button>   
+          <button class="modal-container__close" @click="$emit('close')"><img src="../assets/images/exit.svg"></button>
+          <button class="modal-container__add" @click="addMedia"><slot></slot></button>   
         </div>
       </div>
     </div>
@@ -87,13 +87,27 @@ export default {
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
 
-  &__close {
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__close, &__add {
     border: none;
     outline: none;
     background: none;
     position: absolute;
+    padding: 5px 5px;
+  }
+
+  &__close {
     right: 0;
     top:0;
+  }
+
+  &__add {
+    right: 0;
+    bottom:0;
   }
 }
 
