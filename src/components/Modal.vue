@@ -1,42 +1,44 @@
 <template>
   <transition name="modal">
     <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container"> 
-          <P>
-            <input 
-              v-model="type" 
-              type="radio" 
-              id="audio" 
-              value="audio" 
-            >
-            <label for="audio">Аудио</label>
-          </P>
-          <P>
-            <input 
-              v-model="type" 
-              type="radio" 
-              id="video" 
-              value="video" 
-            >
-            <label for="video">Видео</label>
-          </P>
-          <P>
-            <input 
-              v-model="type" 
-              type="radio" 
-              id="image" 
-              value="image" 
-            >
-            <label for="image">Изображение</label>
-          </P>
-          <P>
-            <label for="src">Путь</label>
-            <input v-model="src" id="src">
-          </P>
-          <button class="modal-container__close" @click="$emit('close')"><img src="../assets/images/exit.svg"></button>
-          <button class="modal-container__add" @click="addMedia"><slot></slot></button>   
-        </div>
+      <div class="modal-container"> 
+        <P>
+          <input 
+            type="radio"
+            id="audio" 
+            value="audio" 
+            v-model="type" 
+          >
+          <label for="audio">Аудио</label>
+        </P>
+        <P>
+          <input 
+            type="radio"                            
+            id="video" 
+            value="video" 
+            v-model="type" 
+          >
+          <label for="video">Видео</label>
+        </P>
+        <P>
+          <input 
+            type="radio" 
+            id="image" 
+            value="image" 
+            v-model="type" 
+          >
+          <label for="image">Изображение</label>
+        </P>
+        <P>
+          <label for="src">Путь</label>
+          <input id="src" v-model="src">
+        </P>
+        <button class="modal-container__close" @click="$emit('close')">
+          <img src="../assets/images/exit.svg">
+        </button>
+        <button class="modal-container__add" @click="addMedia">
+          <img src="../assets/images/add.svg">
+        </button>   
       </div>
     </div>
   </transition>
@@ -47,12 +49,21 @@ export default {
   data () {
     return {
       type: 'audio',
-      src:  ''        
+      src: ''        
     }
   },
   methods: {
     addMedia() {
-      this.$emit('emit-media', { type:this.type, src:this.src } )
+      if(this.src === '') {
+        if(this.type === 'audio') {
+          this.src = 'https://m.vk.com/mp3/audio_api_unavailable.mp3'
+        }else if (this.type === 'video') {
+         this.src = 'https://cs529306.vkuservideo.net/u223412927/videos/fd5a982178.720.mp4?extra=ru_pYFsedoBvH78r6t3BH7XjYDL15bcYLX4kCOICgEymDSLxr8iMeTflt_F5isu5CCJ2YVYZj3HLGK32KGGZ5j0UPVoiePY4OjRv527ESvwY9EUrDEIoGWTr2Ua-mXBbPgbIpuucUA'
+        }else {
+          this.src = 'http://www.1gai.ru/uploads/posts/2014-10/1414425445_mercedes-benz-s550-coupe-8.jpg'
+        }  
+      }
+      this.$emit('emit-media', { type: this.type, src: this.src })
     }
   }
 }
@@ -67,13 +78,10 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
-  display: table;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity .3s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .modal-container {
